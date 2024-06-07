@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+	<div id= h2-bloc>
+	    <h2>Pay My Buddy</h2>
+	</div>
+    <form th:action="@{/login}" method="post">
+        <div>
+            <label for="email"></label>
+            <input type="email" placeholder="Mail" id="username" name="username" required />
+        </div>
+        <div>
+            <label for="password"></label>
+            <input type="password" placeholder="Mot de passe" id="password" name="password" required />
+        </div>
+        <div id= btn-bloc>
+            <button type="submit">Se connecter</button>
+        </div>
+    </form>
+</body>
+</html>

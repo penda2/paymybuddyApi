@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+	<div id= h2-bloc>
+		 <h2>Pay My Buddy</h2>
+	</div>
+    <form th:action="@{/register}" th:object="${user}" method="post">
+        <div>
+            <label for="username"></label>
+            <input type="text" placeholder="Username" id="username" th:field="*{username}" required/>
+        </div>
+        <div>
+            <label for="email"></label>
+            <input type="email" placeholder="Mail" id="email" th:field="*{email}" required/>
+        </div>
+        <div>
+            <label for="password"></label>
+            <input type="password" placeholder="Mot de passe" id="password" th:field="*{password}" required/>
+        </div>
+        <div id= btn-bloc>
+            <button type="submit">S'inscrire</button>
+        </div>
+    </form>
+</body>
+</html>
