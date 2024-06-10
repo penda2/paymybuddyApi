@@ -9,5 +9,6 @@ public interface UserService {
 	UserModel save(UserModel userModel);
 
 	Optional<UserModel> findByUsername(String username);
+	Optional<UserModel> findByEmail(String email);
 
 }

@@ -1,10 +1,42 @@
+<!-- src/main/resources/templates/profile.html -->
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Profile</title>
+<title>Profil</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"	rel="stylesheet">
 </head>
 <body>
-
+	<div class="navbar">
+		<div class="navbar-left">
+	    	<p class= logo-dark>Pay My Buddy</p>
+		</div>
+		<div class="navbar-right">
+			<a th:href="@{/transfer}"
+				th:classappend="${activePage == 'transfert'} ? ' active' : ''">Transférer</a>
+			<a th:href="@{/profile}"
+				th:classappend="${activePage == 'profile'} ? ' active' : ''">Profil</a>
+			<a th:href="@{/addRelation}"
+				th:classappend="${activePage == 'relation'} ? ' active' : ''">Ajouter relation</a> 
+				<a th:href="@{/logout}">Se déconnecter</a>
+		</div>
+	</div>
+	<form th:action="@{/profile}" th:object="${user}" method="post">
+		<div>
+			<label for="username">Username</label> <input type="text"
+				placeholder="@usename" id="username" th:field="*{username}" required />
+		</div>
+		<div>
+			<label for="email">Mail</label> <input type="email"
+				placeholder="nom@domain.com" id="email" th:field="*{email}" required />
+		</div>
+		<div>
+			<label for="password">Mot de passe</label> <input type="password"
+				placeholder="mot de passe" id="password" th:field="*{password}" />
+		</div>
+		<div class="submit-orange-bloc">
+			<button class= "submit-orange" type="submit">Modifier</button>
+		</div>
+	</form>
 </body>
 </html>

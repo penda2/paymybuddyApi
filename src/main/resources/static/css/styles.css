@@ -2,28 +2,75 @@
 
 /* styles.css */
 body {
-	font-family: Inter;
+	font-family: 'Inter', sans-serif;
 	margin: 0;
 	padding: 0;
 }
 
-#h2-bloc {
-	display: flex;
-	align-content: center;
-	justify-content: center;
-	align-items: center;
+.navbar a.active {
+	color: #207FEE;
 }
 
-h2 {
-	display: inline;
-	width: 170;
+.navbar-right a:hover {
+	color: #F69F1D;
+}
+
+.navbar {
+	margin: 0;
+	display: flex;
+	align-items: center;
+	padding: 30px;
+	align-content: space-between;
+	justify-content: space-between;
+}
+
+.active {
+	color: #207FEE;
+}
+
+.navbar-right a {
+	margin-right: 30px;
+	text-decoration: none;
+	list-style-type: none;
+	color: #000000;
+	font-weight: bold;
+}
+
+}
+.logo-bloc {
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 60px;
+}
+
+.logo-dark {
+	color: #000000;
+	font-weight: bold;
+}
+
+.logo-Orange {
 	text-align: center;
-	margin-top: 0 auto;
+	width: 150px;
+	margin: 50px;
 	padding: 18px;
 	background-color: #F69F1D;
 	color: #FFFFFF;
 	border-radius: 8px;
-	margin-top: 50px;
+}
+
+.submit-orange {
+	text-align: center;
+	width: 150px;
+	padding: 14px;
+	background-color: #F69F1D;
+	color: #FFFFFF;
+	border-radius: 8px;
+}
+
+.submit-orange-bloc {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 30px;
 }
 
 form {
@@ -52,12 +99,13 @@ input[type="text"], input[type="email"], input[type="password"] {
 	border: 1px solid #ddd;
 	border-radius: 8px;
 }
-#btn-bloc {	
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
+
+#btn-bloc {
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
 }
 
 button {
@@ -69,9 +117,9 @@ button {
 	border-radius: 8px;
 	cursor: pointer;
 	font-weight: bolder;
-    font-size: 18px;
+	font-size: 18px;
 }
 
 button:hover {
-	background-color: #0056b3;
+	background-color: #207FEE;
 }

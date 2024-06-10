@@ -1,7 +1,8 @@
 package com.paymybuddy.api.config;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,10 +18,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 	private UserService userService;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserModel user = userService.findByUsername(username)
-				.orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
-
-		return User.builder().username(user.getUsername()).password(user.getPassword()).roles("USER").build();
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		UserModel userModel = userService.findByEmail(email)
+				.orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
+		return new org.springframework.security.core.userdetails.User(userModel.getEmail(), userModel.getPassword(),
+				new ArrayList<>());
 	}
 }

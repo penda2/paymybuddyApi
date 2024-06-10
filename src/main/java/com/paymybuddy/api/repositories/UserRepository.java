@@ -8,7 +8,9 @@ import org.springframework.stereotype.Repository;
 import com.paymybuddy.api.models.UserModel;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserModel, Integer>{
-    Optional<UserModel> findByUsername(String username);
+public interface UserRepository extends JpaRepository<UserModel, Integer> {
+	Optional<UserModel> findByUsername(String username);
+
+	Optional<UserModel> findByEmail(String email);
 
 }
