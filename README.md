@@ -7,6 +7,8 @@ Money transfer application.
 ##  Physical data model
 
 This model defines the structure of the database by representing its tables, columns and relations between tables.
+![image alt](https://github.com/penda2/paymybuddyApi/blob/385fe026653b056bd0005c82dce823b0558e9f05/MPD.png)
+
 ## Installation
   This application is developed with: 
 
