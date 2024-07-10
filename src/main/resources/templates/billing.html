@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Facturation</title>
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+<link
+	href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="navbar">
+		<div class="navbar-left">
+			<h1 class=logo-dark>Pay My Buddy</h1>
+		</div>
+		<div class="navbar-right">
+			<a th:href="@{/transfert}" th:classappend="${activePage == 'transfert'} ? ' active' : ''">Transférer</a>
+			<a th:href="@{/profile}" th:classappend="${activePage == 'profile'} ? ' active' : ''">Profil</a>
+			<a th:href="@{/relation}" th:classappend="${activePage == 'relation'} ? ' active' : ''">Ajouter relation</a> 
+			<a th:href="@{/deposit}" th:classappend="${activePage == 'deposit'} ? ' active' : ''">Virements</a>
+			<a th:href="@{/billing}" th:classappend="${activePage == 'billing'} ? ' active' : ''">Facturation</a>
+			<a th:href="@{/logout}">Se déconnecter</a>
+		</div>
+	</div>
+	<div class="billing-bloc">
+		<div class="container-billing">
+			<h2>Facturation</h2>
+		</div>
+		<div class="appli-address">
+			<h2 class="logo-small">Pay My Buddy</h2>
+			<p>Adresse:</p>
+			<p>Contact:</p>
+		</div>
+		<div class="user-address">
+			<p>Nom du client:</p>
+			<p>Identifiant client:</p>
+			<p>Adresse email:</p>
+		</div>
+		<div class="date-bloc">
+			<p class="billing-date">Date de facture :</p>
+			<p class="billing-number">Numéro de facture :</p>
+		</div>
+		<div class="container-table">
+			<table class="table-billing">
+				<caption>Liste des transctions :</caption>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Montant</th>
+						<th>Destinataire</th>
+						<th>Coût du tansfert</th>
+						<th>Montant total</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>18/06/2024</td>
+						<td>25€</td>
+						<td>Victor</td>
+						<td>0.125€</td>
+						<td>25.125</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Virements</title>
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+<link
+	href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="navbar">
+		<div class="navbar-left">
+			<h1 class=logo-dark>Pay My Buddy</h1>
+		</div>
+		<div class="navbar-right">
+			<a th:href="@{/transfert}" th:classappend="${activePage == 'transfert'} ? ' active' : ''">Transférer</a>
+			<a th:href="@{/profile}" th:classappend="${activePage == 'profile'} ? ' active' : ''">Profil</a>
+			<a th:href="@{/relation}" th:classappend="${activePage == 'relation'} ? ' active' : ''">Ajouter relation</a> 
+			<a th:href="@{/deposit}" th:classappend="${activePage == 'deposit'} ? ' active' : ''">Virements</a>
+			<a th:href="@{/billing}" th:classappend="${activePage == 'billing'} ? ' active' : ''">Facturation</a>
+			<a th:href="@{/logout}">Se déconnecter</a>
+		</div>
+	</div>
+	<div class="container">
+		<div id="balance-bloc">
+			<p class="deposit-p"> Solde : <span th:text="${#numbers.formatDecimal(user.balance, 1, 2)}"></span><span> €</span></p>
+		</div>
+		<div class="scs-msg-deposit" th:if="${successMessage}">
+			<p class="success-message" th:text="${successMessage}"></p>
+		</div>
+		<div class="fail-msg" th:if="${errorMessage}">
+			<p class="msg-red" th:text="${errorMessage}"></p>
+		</div>
+		<p class="deposit-p">Versement sur ce compte:</p>
+		<form th:action="@{/deposit}" id="form-deposit" method="post">
+			<div class="input-with-symbol">
+				<label class="label-deposit" for="deposit">Montant à verser:</label>
+				<span class="symbol-deposit">€</span> 
+				<input type="number" id="deposit" name="amount" step="0.01" required />
+			</div>
+			<div id=btn-bloc-deposit>
+				<button class="btn-submit" type="submit">Valider</button>
+			</div>
+		</form>
+
+		<p class="deposit-p">Transferer vers le compte bancaire:</p>
+		<form th:action="@{/transferToBank}" method="post" id="form-deposit">
+			<div class="input-with-symbol">
+				<label class="label-deposit" for="transfer">Montant à transférer</label> 
+				<span class="symbol-deposit">€</span> 
+				<input type="number" id="transfer" name="amount" required />
+			</div>
+			<div id=btn-bloc-deposit>
+				<button class="btn-submit" type="submit">Valider</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

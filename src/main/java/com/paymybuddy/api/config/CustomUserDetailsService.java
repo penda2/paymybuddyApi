@@ -1,7 +1,6 @@
 package com.paymybuddy.api.config;
 
 import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,6 +16,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Autowired
 	private UserService userService;
 
+	// search user in the database with the loadUserByUsername method
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		UserModel userModel = userService.findByEmail(email)

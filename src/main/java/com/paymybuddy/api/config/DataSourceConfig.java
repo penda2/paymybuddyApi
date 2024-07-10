@@ -16,6 +16,8 @@ public class DataSourceConfig {
 		this.dotenv = dotenv;
 	}
 
+	//configuring DataSource to connect to the database using the connection information provided by the environment variables
+
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();

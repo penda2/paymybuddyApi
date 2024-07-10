@@ -1,26 +1,32 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login</title>
-        <link rel="stylesheet" th:href="@{/css/styles.css}" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"	rel="stylesheet">
+<title>Login</title>
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-	<div class= logo-bloc>
-	    <p class=logo-Orange>Pay My Buddy</p>
+	<div id="logo-bloc">
+		<h1 class=logo-dark>Pay My Buddy</h1>
 	</div>
-    <form th:action="@{/login}" method="post">
-        <div>
-            <label for="email"></label>
-            <input type="email" placeholder="Mail" id="username" name="username" required />
-        </div>
-        <div>
-            <label for="password"></label>
-            <input type="password" placeholder="Mot de passe" id="password" name="password" required />
-        </div>
-        <div id= btn-bloc>
-            <button type="submit">Se connecter</button>
-        </div>
-    </form>
+	<form th:action="@{/login}" id="form-basic" method="post">
+		<div th:if="${param.error}" class="login-error-msg">
+			<p class="msg-red">Nom d'utilisateur ou mot de passe incorrect.</p>
+		</div>
+		<div th:if="${param.logout}" class="success-msg-bloc">
+			<p class="success-message">Vous avez été déconnecté avec succès.</p>
+		</div>
+		<div>
+			<label for="email">Adresse e-mail</label> 
+			<input type="email" placeholder="Mail" id="email" name="email" required />
+		</div>
+		<div>
+			<label for="password">Mot de passe</label> 
+			<input type="password" placeholder="Mot de passe" id="password" name="password" required />
+		</div>
+		<div id=btn-bloc>
+			<button class="btn-submit" type="submit">Se connecter</button>
+		</div>
+	</form>
 </body>
 </html>

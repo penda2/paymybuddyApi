@@ -1,10 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Transférer</title>
+<title>Transfert</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+	<div class="navbar">
+		<div class="navbar-left">
+			<h1 class=logo-dark>Pay My Buddy</h1>
+		</div>
+		<div class="navbar-right">
+			<a th:href="@{/transfert}" th:classappend="${activePage == 'transfert'} ? ' active' : ''">Transférer</a>
+			<a th:href="@{/profile}" th:classappend="${activePage == 'profile'} ? ' active' : ''">Profil</a>
+			<a th:href="@{/relation}" th:classappend="${activePage == 'relation'} ? ' active' : ''">Ajouter relation</a> 
+			<a th:href="@{/deposit}" th:classappend="${activePage == 'deposit'} ? ' active' : ''">Virements</a>
+			<a th:href="@{/logout}">Se déconnecter</a>
+		</div>
+	</div>
+	<div>
+		<div th:if="${successMessage}" class="success-msg-bloc">
+			<p th:text="${successMessage}" class="success-message"></p>
+		</div>
+		<div class="fail-msg" th:if="${errorMessage}">
+			<p class="msg-red" th:text="${errorMessage}"></p>
+		</div>
+		<form th:action="@{/transfert}" id="form-transfer" th:object="${transaction}" method="post">
+			<select aria-label="select-connection" name="receiver" id="relation-select" required>
+				<option value="">Selctionner une relation</option>
+				<option th:each="relation : ${userRelations}" th:value="${relation.id}" th:text="${relation.username}"></option>
+			</select>
+			<div class="input-with-symbol">			 
+				<label for="description">Description</label> 
+				<input type="text" name="description" id="description" placeholder="Description" th:field="*{description}" required /> 
+			</div>
+			<div class="input-with-symbol">
+				<label for="amount">Montant</label>
+				<span class="symbol">€</span> 
+				<input type="number" name="amount" id="amount" placeholder="Montant" th:field="*{amount}" required />
+			</div>
+			<div id="btn-pay-bloc">
+				<button type="submit" class="btn-submit">Payer</button>
+			</div>
+		</form>
 
+		<table class="table-transfer">
+			<caption>Mes transactions</caption>
+			<thead>
+				<tr>
+					<th>Relations</th>
+					<th>Descriptions</th>
+					<th>Montant</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="transaction : ${transactions}">
+					<td th:text="${transaction.receiver.username}"></td>
+					<td th:text="${transaction.description}"></td>
+					<td th:text="${transaction.amount}+'€'"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>
